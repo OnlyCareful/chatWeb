@@ -1,0 +1,12 @@
+# 访问端口
+server:
+  port: 8080
+spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://106.12.39.122:3306/chatWeb
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
