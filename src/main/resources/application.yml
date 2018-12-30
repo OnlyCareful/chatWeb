@@ -4,8 +4,8 @@ server:
 spring:
   # 数据库配置
   datasource:
-    url: jdbc:mysql://106.12.39.122:3306/chatWeb
-    username: root
+    url: jdbc:mysql://106.12.39.122:8001/chatWeb
+    username: chatWeb
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 

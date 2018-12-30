@@ -1,0 +1,10 @@
+# 指定基础镜像，项目依赖的jdk
+FROM docker.io/openjdk:8u181-jdk
+# 复制本地文件到容器
+COPY /target/only-0.0.1-SNAPSHOT.jar /chatweb.jar
+# 指定容器启动时执行的命令
+ENTRYPOINT java -jar /chatweb.jar
+# 指定于外界交互的端口
+EXPOSE 80
+
+# 运行容器命令：docker run -d -p 80:8080 --name chatweb chatweb:test

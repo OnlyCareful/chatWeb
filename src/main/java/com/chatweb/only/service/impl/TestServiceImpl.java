@@ -2,10 +2,11 @@ package com.chatweb.only.service.impl;
 
 import com.chatweb.only.mapper.TestMapper;
 import com.chatweb.only.service.ITestService;
+import com.chatweb.only.tableEntity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 
 @Service
 public class TestServiceImpl implements ITestService {
@@ -14,7 +15,7 @@ public class TestServiceImpl implements ITestService {
     private TestMapper testMapper;
 
     @Override
-    public Map<String, Object> getUser(String id) {
+    public List<User> getUser(String id) {
         return testMapper.getUser(id);
     }
 }

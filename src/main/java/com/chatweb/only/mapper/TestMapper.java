@@ -1,11 +1,12 @@
 package com.chatweb.only.mapper;
 
+import com.chatweb.only.tableEntity.User;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.Map;
+import java.util.List;
 
 public interface TestMapper {
 
-    @Select("Select * from User where id = #{id}")
-    Map<String, Object> getUser(String id);
+    @Select("Select * From User Where id = #{id}")
+    List<User> getUser(String id);
 }

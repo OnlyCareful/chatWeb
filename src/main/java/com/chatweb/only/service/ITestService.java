@@ -1,8 +1,10 @@
 package com.chatweb.only.service;
 
-import java.util.Map;
+import com.chatweb.only.tableEntity.User;
+
+import java.util.List;
 
 public interface ITestService {
 
-    Map<String, Object> getUser(String id);
+    List<User> getUser(String id);
 }
