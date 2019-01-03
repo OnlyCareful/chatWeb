@@ -4,9 +4,18 @@ server:
 spring:
   # 数据库配置
   datasource:
-    url: jdbc:mysql://106.12.39.122:8001/chatWeb
+    url: jdbc:mysql://106.12.73.176:3306/chatWeb
     username: chatWeb
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.chatweb.only.tableEntity
+  global-config:
+    id-type: 3
+    db-column-underline: false
+    field-strategy: 1
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false

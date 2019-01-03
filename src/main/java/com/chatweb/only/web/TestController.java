@@ -1,4 +1,4 @@
-package com.chatweb.only.controller;
+package com.chatweb.only.web;
 
 import com.chatweb.only.service.ITestService;
 import com.chatweb.only.tableEntity.User;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("test")
