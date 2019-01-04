@@ -45,7 +45,7 @@ public class User extends Model<User> {
     /**
      * 创建时间
      */
-    private Date creationDate;
+    private Date creationDate = new Date();
 
 
     public String getId() {
