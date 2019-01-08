@@ -8,6 +8,8 @@ spring:
     username: chatweb
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+# mybatis-plus 配置
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.chatweb.only.tableEntity
@@ -19,3 +21,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+# 日志配置
+logging:
+  level.root: info
+  file: logs/chatweb.log
