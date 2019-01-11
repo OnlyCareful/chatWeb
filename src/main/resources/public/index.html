@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,14 +13,9 @@
                 type:'get',
                 url:'/test/user/1',
                 dataType:'json',
-                success:function (xhr,data) {
-                    if (data.code === 302){
-                        alert(data.msg)
-                    } else {
-                        alert("请求成功")
-                    }
+                success:function (data) {
+                    alert(data)
                 }
-
             })
         }
     </SCRIPT>
