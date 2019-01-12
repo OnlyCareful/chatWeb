@@ -20,17 +20,8 @@ public class TestController {
     private ITestService iTestService;
 
     @GetMapping("/user/{id}")
-    public List<User> getUser(@PathVariable("id") String id) throws SQLException {
-        if ("0".equals(id)){
-            throw new SQLException("sql错误");
-        }
-        if ("1".equals(id)){
-            User u = new User();
-            u.setId("rwerwewerwere");
-            List l = new ArrayList();
-            l.add(u);
-            return l;
-        }
+    public List<User> getUser(@PathVariable("id") String id) {
+        System.out.println("处理中");
         return iTestService.getUser(id);
     }
 }
