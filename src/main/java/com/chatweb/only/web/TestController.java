@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 测试接口
+ * @author fz
+ * @date 2019/01/20
+ */
 @RestController
 @RequestMapping("/test")
 public class TestController {

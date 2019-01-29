@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 拦截器配置
+ * @author InnerConc
+ * @date 2019/01/20
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {

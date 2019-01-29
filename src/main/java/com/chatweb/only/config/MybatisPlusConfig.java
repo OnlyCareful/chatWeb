@@ -15,10 +15,18 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @Configuration
-@MapperScan("com.chatweb.only.mapper") // 扫描mapper
+/** 扫描mapper*/
+@MapperScan("com.chatweb.only.mapper")
+/**
+ * MybatisPlus配置
+ * @author fz
+ * @date 2019/01/20
+ */
 public class MybatisPlusConfig {
-    /*
+
+    /**
      * 分页插件，自动识别数据库类型
      */
     @Bean
@@ -33,26 +41,30 @@ public class MybatisPlusConfig {
      */
     public static void main(String[] args) {
         AutoGenerator mpg = new AutoGenerator();
-        // 选择 freemarker 引擎，默认 Veloctiy
-        // mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+        /**选择 freemarker 引擎，默认 Veloctiy
+        mpg.setTemplateEngine(new FreemarkerTemplateEngine());*/
 
-        // 全局配置
+        /** 全局配置*/
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir("E:\\chatWeb\\src\\main\\java");
         gc.setFileOverride(true);
-        gc.setActiveRecord(true);// 不需要ActiveRecord特性的请改为false
-        gc.setEnableCache(false);// XML 二级缓存
-        gc.setBaseResultMap(true);// XML ResultMap
-        gc.setBaseColumnList(false);// XML columList
+        // 不需要ActiveRecord特性的请改为false
+        gc.setActiveRecord(true);
+        // XML 二级缓存
+        gc.setEnableCache(false);
+        // XML ResultMap
+        gc.setBaseResultMap(true);
+        // XML columList
+        gc.setBaseColumnList(false);
         // .setKotlin(true) 是否生成 kotlin 代码
         gc.setAuthor("z");
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setMapperName("%sMapper");
-        //gc.setXmlName("%sDao");
+        /** gc.setXmlName("%sDao"); */
         gc.setServiceName("I%sService");
         gc.setServiceImplName("%sServiceImpl");
-        //gc.setControllerName("%sController");
+        /** gc.setControllerName("%sController");*/
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -77,8 +89,10 @@ public class MybatisPlusConfig {
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
         //strategy.setTablePrefix(new String[] { "tlog_", "tsys_" });// 此处可以修改为您的表前缀
-        strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "ChatRecords" }); // 需要生成的表
+        // 表名生成策略
+        strategy.setNaming(NamingStrategy.underline_to_camel);
+        // 需要生成的表
+        strategy.setInclude(new String[] { "ChatRecords" });
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
@@ -109,7 +123,7 @@ public class MybatisPlusConfig {
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
-                Map<String, Object> map = new HashMap<String, Object>();
+                Map<String, Object> map = new HashMap<>(0);
                 map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
                 this.setMap(map);
             }
