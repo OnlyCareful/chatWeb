@@ -96,7 +96,7 @@ public class DateUitl {
      * @return int
      */
     public static int getMonth(Date date){
-        return getDateField(date, Calendar.MONTH);
+        return getDateField(date, Calendar.MONTH) + 1;
     }
 
     /**
@@ -130,5 +130,10 @@ public class DateUitl {
                     "format='" + format + '\'' +
                     '}';
         }
+    }
+
+    public static void main(String[] args) {
+        int month = DateUitl.getMonth(new Date());
+        System.out.println(month);
     }
 }
