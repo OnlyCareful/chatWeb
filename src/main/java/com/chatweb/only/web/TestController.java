@@ -1,17 +1,18 @@
 package com.chatweb.only.web;
 
+import com.chatweb.only.bean.Result;
+import com.chatweb.only.bean.ResultCode;
 import com.chatweb.only.service.ITestService;
 import com.chatweb.only.tableEntity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
  * 测试接口
+ *
  * @author fz
  * @date 2019/01/20
  */
@@ -22,10 +23,18 @@ public class TestController {
     @Autowired
     private ITestService iTestService;
 
+    //@RequestMapping(value = {"/user/{id}","/{id}"}, method = {RequestMethod.GET,RequestMethod.POST})
     @GetMapping("/user/{id}")
+    @PostMapping("/{id}")
     public List<User> getUser(@PathVariable("id") String id) {
         System.out.println("处理中");
         return iTestService.getUser(id);
     }
 
+    @GetMapping("/result/{id}")
+    public Result isResult(@PathVariable("id") String id,
+                           @RequestParam(value = "rp", required = false, defaultValue = "是不是") String requestParam) {
+        System.out.println("处理中");
+        return new Result(ResultCode.SUCCEED, (Object) (id + requestParam));
+    }
 }

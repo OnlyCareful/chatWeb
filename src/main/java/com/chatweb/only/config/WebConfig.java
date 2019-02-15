@@ -70,12 +70,12 @@ public class WebConfig implements WebMvcConfigurer {
 @ControllerAdvice
 class ReturnedFormatConfig implements ResponseBodyAdvice<Object> {
     /**
-     * 过滤
+     * 过滤（true则执行beforeBodyWrite方法，false则不执行）
      */
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
         // 判断处理请求的方法返回值类型是否为Result
-        return !methodParameter.getMethod().getReturnType().isInstance(Result.class);
+        return !methodParameter.getMethod().getReturnType().isAssignableFrom(Result.class);
     }
 
     /**
