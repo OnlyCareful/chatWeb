@@ -9,17 +9,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 /**
  * 全局异常统一处理
+ * @author InnerConce
+ * @date 2019/01/20
  */
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    // 捕获RuntimeException类及其子类异常
+    /**
+     * 捕获RuntimeException类及其子类异常
+     */
     @ExceptionHandler(RuntimeException.class)
     public Result handleException(){
         Result result = new Result(ResultCode.SUCCEED);
         return result;
     }
-
 
 }

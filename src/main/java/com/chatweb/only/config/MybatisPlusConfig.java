@@ -21,7 +21,7 @@ import java.util.Map;
 @MapperScan("com.chatweb.only.mapper")
 /**
  * MybatisPlus配置
- * @author fz
+ * @author InnerConce
  * @date 2019/01/20
  */
 public class MybatisPlusConfig {

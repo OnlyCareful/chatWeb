@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 拦截器配置
- * @author InnerConc
+ * @author InnerConce
  * @date 2019/01/20
  */
 @Configuration
