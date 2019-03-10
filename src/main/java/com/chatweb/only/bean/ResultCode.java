@@ -1,9 +1,22 @@
 package com.chatweb.only.bean;
 
+/**
+ * 自定义异常信息
+ * @author InnerConce
+ * @date 2019/03/08
+ */
 public enum ResultCode {
-    
+    /**
+     * 请求成功
+     */
     SUCCEED(200,"请求成功"),
+    /**
+     * 自定义异常
+     */
     CUSTOM(302,"自定义异常"),
+    /**
+     * 服务器内部错误
+     */
     FAILURE(500,"服务器内部错误");
 
     private int code;

@@ -8,3 +8,4 @@ ENTRYPOINT java -jar /chatweb.jar
 EXPOSE 80
 
 # 运行容器命令：docker run -d -p 80:8080 --name chatweb chatweb:test
+# docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=InnerConce@93 --name charweb mysql
