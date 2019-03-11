@@ -5,6 +5,7 @@ import com.chatweb.only.bean.ResultCode;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -74,8 +75,10 @@ class ReturnedFormatConfig implements ResponseBodyAdvice<Object> {
      */
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
-        // 判断处理请求的方法返回值类型是否为Result
-        return !methodParameter.getMethod().getReturnType().isAssignableFrom(Result.class);
+        // 判断处理请求的方法返回值类型是否为Result，是否报错
+        boolean isResponseEntity = !methodParameter.getMethod().getReturnType().isAssignableFrom(ResponseEntity.class);
+        boolean isResult = !methodParameter.getMethod().getReturnType().isAssignableFrom(Result.class);
+        return isResponseEntity && isResult;
     }
 
     /**
