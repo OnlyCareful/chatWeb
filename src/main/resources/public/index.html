@@ -6,12 +6,16 @@
     <script type="text/javascript" src="/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+    <span>请填写ID：</span>
+    <input id="id" name="id" value="1">
     <button class="test" onclick="clickHandler()">发送请求</button>
     <SCRIPT>
         function clickHandler() {
+            var data = $("#id").val();
             $.ajax({
                 type:'get',
-                url:'/test/user/1',
+                data: {id: data},
+                url:'/test/user',
                 dataType:'json',
                 success:function (data) {
                     alert(data)

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ *  User服务实现类
  * </p>
  *
- * @author z
+ * @author InnerConce
  * @since 2019-01-03
  */
 @Service

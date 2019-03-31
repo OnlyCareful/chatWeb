@@ -8,11 +8,8 @@ import com.baomidou.mybatisplus.enums.IdType;
 import java.io.Serializable;
 
 /**
- * <p>
- * 
- * </p>
- *
- * @author z
+ * 聊天消息类
+ * @author InnerConce
  * @since 2019-01-04
  */
 public class ChatRecords extends Model<ChatRecords> {
@@ -87,11 +84,11 @@ public class ChatRecords extends Model<ChatRecords> {
     @Override
     public String toString() {
         return "ChatRecords{" +
-        ", id=" + id +
-        ", send=" + send +
-        ", receive=" + receive +
-        ", content=" + content +
-        ", creationDate=" + creationDate +
-        "}";
+                "id='" + id + '\'' +
+                ", send='" + send + '\'' +
+                ", receive='" + receive + '\'' +
+                ", content='" + content + '\'' +
+                ", creationDate=" + creationDate +
+                '}';
     }
 }

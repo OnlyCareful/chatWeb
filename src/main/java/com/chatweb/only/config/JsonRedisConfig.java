@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -22,23 +23,28 @@ import java.util.List;
  * @author InnerConce
  * @date 2019/03/22
  */
+@EnableCaching
 @Configuration
 public class JsonRedisConfig {
 
-    private final CacheProperties cacheProperties;
-
-    public JsonRedisConfig(CacheProperties cacheProperties) {
-        this.cacheProperties = cacheProperties;
-    }
+    private final CacheProperties cacheProperties = new CacheProperties();
 
     @Bean
-    public RedisTemplate<Object, Object> jsonRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         // 设置redis连接工厂
         template.setConnectionFactory(redisConnectionFactory);
-        // 创建json序列化器，并设置
+        // 创建json序列化器
         Jackson2JsonRedisSerializer<Object> jsonSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        template.setDefaultSerializer(jsonSerializer);
+        // Jackson2JsonRedisSerializer默认以LinkedHashMap类型序列化成json数据
+        // 若不设置ObjectMapper，存入对象取值出来后转换成相应类型会出现类型转换异常
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        jsonSerializer.setObjectMapper(objectMapper);
+        // 设置RedisTemplate序列化器
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(jsonSerializer);
         return template;
     }
 
@@ -46,7 +52,7 @@ public class JsonRedisConfig {
     public RedisCacheManager redisCacheManager(RedisConnectionFactory factory){
         // 创建序列化器
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        // 设置序列化规则（可以不设置，使用默认设置）
+        // 设置序列化规则（不设置，使用默认设置，存入对象取值出来后转换成相应类型会出现类型转换异常）
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);

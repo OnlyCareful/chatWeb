@@ -8,6 +8,11 @@ spring:
     username: chatweb
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis配置
+  redis:
+    port: 6379
+    host: 106.12.39.122
+    password: innercon
 
 # mybatis-plus 配置
 mybatis-plus:

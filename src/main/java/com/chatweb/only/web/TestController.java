@@ -7,12 +7,10 @@ import com.chatweb.only.tableEntity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * 测试接口
  *
- * @author fz
+ * @author InnerConce
  * @date 2019/01/20
  */
 @RestController
@@ -27,7 +25,7 @@ public class TestController {
      */
     @GetMapping("/user/{id}")
     @PostMapping("/{id}")
-    public List<User> getUser(@PathVariable("id") String id) {
+    public User getUser(@PathVariable("id") String id) {
         System.out.println("处理中");
         return iTestService.getUser(id);
     }
@@ -37,5 +35,11 @@ public class TestController {
                            @RequestParam(value = "rp", required = false, defaultValue = "是不是") String requestParam) {
         System.out.println("处理中");
         return new Result(ResultCode.SUCCEED, (Object) (id + requestParam));
+    }
+
+    @GetMapping("/user")
+    public User cacheUser(String id) {
+        User user = iTestService.getUser(id);
+        return user;
     }
 }

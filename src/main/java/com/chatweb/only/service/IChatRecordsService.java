@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
- *  服务类
+ *  ChatRecords服务类
  * </p>
  *
  * @author z

@@ -2,9 +2,17 @@ package com.chatweb.only.service;
 
 import com.chatweb.only.tableEntity.User;
 
-import java.util.List;
-
+/**
+ * 测试服务类
+ * @author InnerConce
+ * @date 2019/03/31
+ */
 public interface ITestService {
 
-    List<User> getUser(String id);
+    /**
+     * 根据ID查询用户
+     * @param id
+     * @return User
+     */
+    User getUser(String id);
 }

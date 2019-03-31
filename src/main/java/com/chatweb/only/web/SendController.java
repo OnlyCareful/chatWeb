@@ -3,7 +3,12 @@ package com.chatweb.only.web;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController/** 设置返回值为JSON格式数据 */
+/**
+ * 消息相关接口
+ * @author InnerConce
+ * @date 2019/03/31
+ */
+@RestController
 @RequestMapping("/send")
 public class SendController {
 

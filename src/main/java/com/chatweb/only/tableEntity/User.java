@@ -9,11 +9,8 @@ import com.baomidou.mybatisplus.enums.IdType;
 import java.io.Serializable;
 
 /**
- * <p>
- * 
- * </p>
- *
- * @author z
+ * 用户类
+ * @author InnerConce
  * @since 2019-01-03
  */
 public class User extends Model<User> {
@@ -112,13 +109,13 @@ public class User extends Model<User> {
     @Override
     public String toString() {
         return "User{" +
-        ", id=" + id +
-        ", account=" + account +
-        ", password=" + password +
-        ", realName=" + realName +
-        ", mobile=" + mobile +
-        ", head=" + head +
-        ", creationDate=" + creationDate +
-        "}";
+                "id='" + id + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", realName='" + realName + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", head=" + head +
+                ", creationDate=" + creationDate +
+                '}';
     }
 }
