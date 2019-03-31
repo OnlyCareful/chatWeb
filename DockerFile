@@ -9,3 +9,5 @@ EXPOSE 80
 
 # 运行容器命令：docker run -d -p 80:8080 --name chatweb chatweb:test
 # docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=InnerConce@93 --name charweb mysql
+# docker run -d -p 6379:6379 --name charwebRedis redis --requirepass "innercon"
+# docker run -d -p 15672:15672 -p 5672:5672 --hostname charwebRabbit --name charwebRabbit -e RABBITMQ_DEFAULT_USER=InnerConce -e RABBITMQ_DEFAULT_PASS=innerconce rabbitmq
