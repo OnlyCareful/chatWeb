@@ -13,6 +13,12 @@ spring:
     port: 6379
     host: 106.12.39.122
     password: innercon
+  # Rabbit MQ配置
+  rabbitmq:
+    host: 106.12.39.122
+    port: 5672
+    username: InnerConce
+    password: innerconce
 
 # mybatis-plus 配置
 mybatis-plus:
