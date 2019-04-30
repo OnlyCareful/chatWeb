@@ -3,6 +3,7 @@ package com.chatweb.only;
 import com.chatweb.only.tableEntity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -32,6 +33,16 @@ public class OnlyApplicationTests {
         redisTemplate.opsForValue().set("user", user);
         User redisUser = (User) redisTemplate.opsForValue().get("user");
         System.out.println(redisUser);
+    }
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void testRabbitmq(){
+        // rabbitTemplate.convertAndSend("amq.direct","cs", "sss");
+        Object receive = rabbitTemplate.receiveAndConvert("测试队列");
+        System.out.println(receive);
     }
 
 }

@@ -38,7 +38,10 @@ public class TestController {
     }
 
     @GetMapping("/user")
-    public User cacheUser(String id) {
+    public User cacheUser(String id) throws Exception {
+        if ("1".equals(id)){
+            throw new Exception("ss");
+        }
         User user = iTestService.getUser(id);
         return user;
     }

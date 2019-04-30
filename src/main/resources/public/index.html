@@ -18,8 +18,11 @@
                 url:'/test/user',
                 dataType:'json',
                 success:function (data) {
-                    alert(data)
-                }
+                    console(data)
+                },
+                error:(res)=>{
+                    console.log(res)
+            }
             })
         }
     </SCRIPT>
