@@ -45,5 +45,10 @@ public class OnlyApplicationTests {
         System.out.println(receive);
     }
 
+    @Test
+    public void os() {
+        String os = System.getProperty("os.name");
+        System.out.println(os);
+    }
 }
 

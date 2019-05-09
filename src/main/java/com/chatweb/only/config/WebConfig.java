@@ -27,18 +27,28 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    private static final String OS_NAME = "win";
+
     /**
      * 加载拦截器（拦截器的执行是会根据 registry 注入的先后顺序执行）
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new WebInterceptor())
-                .addPathPatterns("/test/**","/intercept/**");
+                .addPathPatterns("/test/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/intercept/**").addResourceLocations("classpath:/intercept/");
+        String os = System.getProperty("os.name");
+        if (os.toLowerCase().startsWith(OS_NAME)){
+            // windows系统设置文件
+            registry.addResourceHandler("/intercept/**").addResourceLocations("file:E:/intercept/");
+        } else {
+            // linux系统设置文件
+            registry.addResourceHandler("/intercept/**").addResourceLocations("file:/intercept/");
+        }
     }
 
     /**
